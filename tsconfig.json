@@ -9,7 +9,7 @@
       ]
     },
     "allowJs": false,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -22,5 +22,10 @@
     "experimentalDecorators": true,// 开启装饰器使用
     "jsx": "react", // react18这里也可以改成react-jsx
   },
-  "include": ["./src"]
+    "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+      "node_modules/**"
+  ]
 }
