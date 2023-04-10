@@ -1,19 +1,11 @@
-/*
- * @Author: SunRay1017 13208295650@163.com
- * @Date: 2023-01-09 22:19:07
- * @LastEditors: SunRay1017 13208295650@163.com
- * @LastEditTime: 2023-01-10 21:23:41
- * @FilePath: \webpack-app\config\webpack.base.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
 // webpack.base.js
 const path = require('path');
 const webpack = require('webpack');
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // console.log("NODE_ENV", process.env.NODE_ENV);
 // console.log("BASE_ENV", process.env.BASE_ENV);
-// const isDev = process.env.NODE_ENV === "development"; // 是否是开发模式
+const isDev = process.env.NODE_ENV === 'development'; // 是否是开发模式
 module.exports = {
   entry: path.join(__dirname, '../src/index.tsx'), // 入口文件
   output: {
@@ -72,8 +64,8 @@ module.exports = {
       {
         test: /.css$/, //匹配 css 文件
         use: [
-          // isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-          'style-loader',
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          // 'style-loader',
           'css-loader',
           'postcss-loader'
         ]
@@ -82,8 +74,8 @@ module.exports = {
         test: /.less$/, //匹配所有的 less 文件
         include: [path.resolve(__dirname, '../src')],
         use: [
-          // isDev ? "style-loader" : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css,
-          'style-loader',
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css,
+          // 'style-loader',
           'css-loader',
           'postcss-loader',
           'less-loader'
